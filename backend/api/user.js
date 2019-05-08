@@ -15,6 +15,7 @@ module.exports = app => {
         try {
             existsOrError(user.name, 'Nome não informado')
             existsOrError(user.email, 'Email não informado')
+            existsOrError(user.phone, 'Informe o número do Whatsapp')
             existsOrError(user.password, 'Senha não informada')
             existsOrError(user.confirmPassword, 'Confirmação de Senha inválida')
             equalsOrError(user.password, user.confirmPassword, 'Senhas não conferem')
@@ -52,5 +53,14 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get }
+    const getById = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'phone')
+            .where({ id: req.params.id })
+            .first()
+            .then(user => res.json(user))
+            .catch(err => res.status(500).send(err))
+    }
+
+    return { save, get, getById }
 }

@@ -1,3 +1,5 @@
+<!-- mongo -> user: loles@grr.la pass: #1FodaSe -->
+
 Para rodar o backend, é necessário instalar as dependencias com o comando 'npm i'
 
 Esse projeto requer postgres e mongo instalado

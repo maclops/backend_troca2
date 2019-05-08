@@ -84,7 +84,7 @@ module.exports = app => {
         const count = parseInt(result.count)
 
         app.db('products')
-            .select('id', 'name', 'description')
+            .select('id', 'name', 'description', 'userId')
             .limit(limit).offset(page * limit - limit)
             .then(products => res.json({ data: products, count, limit }))
             .catch(err => res.status(500).send(err))
