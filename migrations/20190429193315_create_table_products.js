@@ -8,8 +8,6 @@ exports.up = function (knex, Promise) {
     table.binary('content').notNull() // blob
     table.integer('userId').references('id')
       .inTable('users').notNull()
-    table.integer('categoryId').references('id')
-      .inTable('categories').notNull()
   })
 };
 
